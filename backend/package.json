@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "migrate": "prisma migrate dev --schema=../prisma/schema.prisma",
+    "migrate": "prisma migrate dev --schema=./prisma/schema.prisma",
     "seed": "node prisma/seed.js",
-    "postinstall": "prisma generate --schema=../prisma/schema.prisma",
+    "postinstall": "prisma generate --schema=./prisma/schema.prisma",
     "test": "jest --runInBand --passWithNoTests"
   },
   "description": "",
