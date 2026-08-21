@@ -15,6 +15,7 @@ model User {
   role      String   @default("customer")
   createdAt DateTime @default(now())
   cartItems CartItem[]
+  reviews   Review[]
 }
 
 model Category {
@@ -33,6 +34,7 @@ model Product {
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  Int?
   cartItems   CartItem[]
+  reviews     Review[]
   createdAt   DateTime  @default(now())
 }
 
@@ -44,4 +46,19 @@ model CartItem {
   productId Int
   quantity  Int      @default(1)
   createdAt DateTime @default(now())
+}
+
+model Review {
+  id         Int      @id @default(autoincrement())
+  rating     Int
+  comment    String?
+  productId  Int
+  userId     Int
+  userName   String
+  createdAt  DateTime @default(now())
+
+  product   Product @relation(fields: [productId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+
+  @@map("reviews")
 }
