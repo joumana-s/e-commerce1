@@ -20,6 +20,10 @@ app.get('/api/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.post('/api/upload', uploadSingle, (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'No image file provided.' });
